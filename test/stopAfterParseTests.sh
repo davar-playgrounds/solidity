@@ -38,6 +38,7 @@ function testFile()
 }
 
 while read -r file; do
+do
 	set +e
 	OUTPUT=$($SPLITSOURCES "$file")
 	RETURN_CODE=$?
@@ -70,5 +71,5 @@ while read -r file; do
 		echo "$file"
 		exit 1
 	fi
-done < <(find "${REPO_ROOT}/test" -iname "*.sol" -and -not -name "documentation.sol")
+done < <(find "${REPO_ROOT}/test" -iname "*.sol" -and -not -name "documentation.sol" -and -not -name "boost_filesystem_bug.sol")
 echo
